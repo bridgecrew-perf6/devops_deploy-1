@@ -1,0 +1,22 @@
+---
+- name: stop tomcat
+  service:
+    name: tomcat
+    state: stopped
+  become: yes
+
+- name: get the list in webapps path
+  command: "ls {{ deploy_path }}"
+  register: webapps_path
+
+- name: remove all existing package in webapps path
+  file:
+    path: "{{ deploy_path }}/{{ item }}"
+    state: absent
+  with_items: "{{ webapps_path.stdout_lines }}"
+
+- name: deploy package
+  get_url:
+    url: "{{ artifactory_url }}/{{ artifactory_path }}/{{ package_name }}"
+    dest: "{{ deploy_path }}"
+  notify: start tomcat

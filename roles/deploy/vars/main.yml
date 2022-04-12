@@ -1,0 +1,5 @@
+deploy_path: "/opt/apache-tomcat-9.0.60/webapps"
+artifactory_url: "http://3.83.230.109:8081/repository"
+version: "9.0.0"
+artifactory_path: "hello-world/com/efsavage/hello-world-war/{{ version }}"
+package_name: "hello-world-war-{{ version }}.war"
