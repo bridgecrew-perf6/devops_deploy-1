@@ -14,6 +14,7 @@
     path: "{{ deploy_path }}/{{ item }}"
     state: absent
   with_items: "{{ webapps_path.stdout_lines }}"
+  become: yes
 
 - name: deploy package
   get_url:
