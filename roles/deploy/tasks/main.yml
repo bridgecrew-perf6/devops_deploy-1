@@ -21,3 +21,6 @@
     url: "{{ artifactory_url }}/{{ artifactory_path }}/{{ package_name }}"
     dest: "{{ deploy_path }}"
   notify: start tomcat
+  
+ - name: Rename package as root
+   command: mv {{ deploy_path }}/{{ artifactId }}-{{ version }}.war {{ deploy_path }}/ROOT.war
