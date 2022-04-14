@@ -23,4 +23,4 @@
   notify: start tomcat
   
 - name: Rename package as root
-  command: mv {{ deploy_path }}/{{ artifactId }}-{{ version }}.war {{ deploy_path }}/ROOT.war
+  command: mv {{ deploy_path }}/{{ package_name }}.war {{ deploy_path }}/ROOT.war
