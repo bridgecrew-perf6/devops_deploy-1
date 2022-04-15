@@ -18,7 +18,7 @@
 
 - name: deploy package
   get_url:
-    url: "{{ artifactory_url }}/{{ artifactory_path }}/{{ package_name }}"
+    url: "{{ artifactory_url }}/{{ artifactory_path }}/{{ package_name }}.war"
     dest: "{{ deploy_path }}"
   notify: start tomcat
   
